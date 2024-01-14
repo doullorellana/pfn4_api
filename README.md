@@ -25,7 +25,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 Diagrama Entidad Relación de como está estructurada la Base de Datos de la API internamente.
 
-![Diagrama_ER][./public/img/Diagrama_ER.PNG]
+![Diagrama_ER.PNG](./public/img/Diagrama_ER.PNG)
 
 ## Learning Laravel
 
