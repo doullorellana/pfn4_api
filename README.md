@@ -27,6 +27,10 @@ Diagrama Entidad Relación de como está estructurada la Base de Datos de la API
 
 ![Diagrama_ER.PNG](./public/img/Diagrama_ER.PNG)
 
+Link del PDF con las Pruebas hechas de los elementos del CRUD de la API:
+
+![Diagrama_ER](./public/pdf)
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
