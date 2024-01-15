@@ -44,6 +44,7 @@ class RolController extends Controller
     public function show($id)
     {
         $id = Rol::find($id);
+        //$id = Rol::where('id_rol', $id)->first();
         return $id;
     }
 
@@ -61,6 +62,7 @@ class RolController extends Controller
     public function update(Request $request, $id)
     {
         $rol = Rol::find($id);
+        //$rol = Rol::where('id_rol', $id)->first();
         $rol -> fecha_creacion = $request -> fecha_creacion;
         $rol -> fecha_modificacion = $request -> fecha_modificacion;
         $rol -> usuario_creacion = $request -> usuario_creacion;
@@ -76,6 +78,7 @@ class RolController extends Controller
     public function destroy($id)
     {
         $rol = Rol::find($id);
+        //$rol = Rol::where('id_rol', $id)->first();
         $rol -> delete();
         return "El rol se eliminó correctamente.";
     }

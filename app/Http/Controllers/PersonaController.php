@@ -47,6 +47,7 @@ class PersonaController extends Controller
     public function show($id)
     {
         $id = Persona::find($id);
+        //$id = Persona::where('id_persona', $id)->first();
         return $id;
     }
 
@@ -64,6 +65,7 @@ class PersonaController extends Controller
     public function update(Request $request, $id)
     {
         $persona = Persona::find($id);
+        //$persona = Persona::where('id_persona', $id)->first();
         $persona -> fecha_creacion = $request -> fecha_creacion;
         $persona -> fecha_modificacion = $request -> fecha_modificacion;
         $persona -> usuario_creacion = $request -> usuario_creacion;
@@ -82,6 +84,7 @@ class PersonaController extends Controller
     public function destroy($id)
     {
         $persona = Persona::find($id);
+        //$persona = Persona::where('id_persona', $id)->first();
         $persona -> delete();
         return "La persona se eliminó correctamente.";
     }

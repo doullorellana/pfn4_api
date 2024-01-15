@@ -27,9 +27,9 @@ Diagrama Entidad Relación de como está estructurada la Base de Datos de la API
 
 ![Diagrama_ER.PNG](./public/img/Diagrama_ER.PNG)
 
-Link del PDF con las Pruebas hechas de los elementos del CRUD de la API:
+Link del PDF con las Pruebas hechas de los elementos del CRUD de la API: 
 
-![Diagrama_ER](./public/pdf)
+![Click aqui Documentacion PDF](./public/pdf)
 
 ## Learning Laravel
 

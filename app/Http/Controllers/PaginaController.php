@@ -46,6 +46,7 @@ class PaginaController extends Controller
     public function show($id)
     {
         $id = Pagina::find($id);
+        //$id = Pagina::where('id_pagina', $id)->first();
         return $id;
     }
 
@@ -63,6 +64,7 @@ class PaginaController extends Controller
     public function update(Request $request, $id)
     {
         $pagina = Pagina::find($id);
+        //$pagina = Pagina::where('id_pagina', $id)->first();
         $pagina -> fecha_creacion = $request -> fecha_creacion;
         $pagina -> fecha_modificacion = $request -> fecha_modificacion;
         $pagina -> usuario_creacion = $request -> usuario_creacion;
@@ -80,6 +82,7 @@ class PaginaController extends Controller
     public function destroy($id)
     {
         $pagina = Pagina::find($id);
+        //$pagina = Pagina::where('id_pagina', $id)->first();
         $pagina -> delete();
         return "La pagina se eliminó correctamente.";
     }

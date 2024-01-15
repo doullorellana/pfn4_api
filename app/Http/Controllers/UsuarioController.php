@@ -49,6 +49,7 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $id = Usuario::find($id);
+        //$id = Usuario::where('id_usuario', $id)->first();
         return $id;
     }
 
@@ -66,6 +67,7 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
+        //$usuario = Usuario::where('id_usuario', $id)->first();
         $usuario -> fecha_creacion = $request -> fecha_creacion;
         $usuario -> fecha_modificacion = $request -> fecha_modificacion;
         $usuario -> usuario_creacion = $request -> usuario_creacion;
@@ -86,6 +88,7 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         $usuario = Usuario::find($id);
+        //$usuario = Usuario::where('id_usuario', $id)->first();
         $usuario -> delete();
         return "El usuario se eliminó correctamente.";
     }

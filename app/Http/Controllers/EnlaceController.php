@@ -46,6 +46,7 @@ class EnlaceController extends Controller
     public function show($id)
     {
         $id = Enlace::find($id);
+        //$id = Enlace::where('id_enlace', $id)->first();
         return $id;
     }
 
@@ -63,6 +64,7 @@ class EnlaceController extends Controller
     public function update(Request $request, $id)
     {
         $enlace = Enlace::find($id);
+        //$enlace = Enlace::where('id_enlace', $id)->first();
         $enlace -> id_pagina = $request -> id_pagina;
         $enlace -> id_rol = $request -> id_rol;
         $enlace -> descripcion = $request -> descripcion;
@@ -80,6 +82,7 @@ class EnlaceController extends Controller
     public function destroy($id)
     {
         $enlace = Enlace::find($id);
+        //$enlace = Enlace::where('id_enlace', $id)->first();
         $enlace -> delete();
         return "El enlace se eliminó correctamente.";
     }

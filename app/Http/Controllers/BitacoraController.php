@@ -43,7 +43,9 @@ class BitacoraController extends Controller
      */
     public function show($id)
     {
+        //echo $id;
         $id = Bitacora::find($id);
+        //$id = Bitacora::where('id_bitacora', $id)->first();
         return $id;
     }
 
@@ -60,7 +62,9 @@ class BitacoraController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //echo $id;
         $bitacora = Bitacora::find($id);
+        //$bitacora = Bitacora::where('id_bitacora', $id)->first();
         $bitacora -> bitacora = $request -> bitacora;
         $bitacora -> id_usuario = $request -> id_usuario;
         $bitacora -> usuario_email = $request -> usuario_email;
@@ -76,6 +80,7 @@ class BitacoraController extends Controller
     public function destroy($id)
     {
         $bitacora = Bitacora::find($id);
+        //$bitacora = Bitacora::where('id_bitacora', $id)->first();
         $bitacora -> delete();
         return "La bitacora se eliminó correctamente.";
     }
