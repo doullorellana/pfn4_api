@@ -31,6 +31,10 @@ Link del PDF con las Pruebas hechas de los elementos del CRUD de la API:
 
 ![Click aqui Documentacion PDF](./public/pdf)
 
+Link del BackUP de la Base de Datos con las pruebas hechas de los elementos del CRUD de la API: 
+
+![Click aqui BK BDD](./database/bk/dump_pfn4userlogapi.sql)
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
