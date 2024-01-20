@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bitacora;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -35,11 +37,18 @@ class UsuarioController extends Controller
         $usuario -> usuario_modificacion = $request -> usuario_modificacion;
         $usuario -> id_persona = $request -> id_persona;
         $usuario -> usuario_email = $request -> usuario_email;
-        $usuario -> clave = $request -> clave;
+        $usuario -> clave = Hash::make($request->clave);
         $usuario -> estado = $request -> estado;
         $usuario -> fecha_nacimiento = $request -> fecha_nacimiento;
         $usuario -> id_rol = $request -> id_rol;
         $usuario -> save();
+
+        // Proceso para anotar el registro de creacion de usuario en la bitacora
+        define('USER_ID_STORE', 1);
+        define('USER_EMAIL_STORE', 'admin@admin');
+        $descripcion = 'El usuario '+ $request->usuario_email +' ha sido creado.';
+        Bitacora::crearBitacora(USER_ID_STORE, USER_EMAIL_STORE, $descripcion);
+
         return "El usuario se guardó correctamente.";
     }
 
@@ -74,11 +83,18 @@ class UsuarioController extends Controller
         $usuario -> usuario_modificacion = $request -> usuario_modificacion;
         $usuario -> id_persona = $request -> id_persona;
         $usuario -> usuario_email = $request -> usuario_email;
-        $usuario -> clave = $request -> clave;
+        $usuario -> clave = Hash::make($request->clave);
         $usuario -> estado = $request -> estado;
         $usuario -> fecha_nacimiento = $request -> fecha_nacimiento;
         $usuario -> id_rol = $request -> id_rol;
         $usuario -> save();
+
+        // Proceso para anotar el registro de actualizacion de usuario en la bitacora
+        define('USER_ID_UPDATE', 1);
+        define('USER_EMAIL_UPDATE', 'admin@admin');
+        $descripcion = 'El usuario '+ $request->usuario_email +' con ID# ' + $id +' ha sido modificado.';
+        Bitacora::crearBitacora(USER_ID_UPDATE, USER_EMAIL_UPDATE, $descripcion);
+
         return "El usuario se actualizó correctamente.";
     }
 
@@ -90,6 +106,14 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         //$usuario = Usuario::where('id_usuario', $id)->first();
         $usuario -> delete();
+
+        // Proceso para anotar el registro de eliminacion de usuario en la bitacora
+        define('USER_ID_DELETE', 1);
+        define('USER_EMAIL_DELETE', 'admin@admin');
+        $descripcion = 'usuario eliminado con ID# '+ $id;
+        Bitacora::crearBitacora(USER_ID_DELETE, USER_EMAIL_DELETE, $descripcion);
+
+
         return "El usuario se eliminó correctamente.";
     }
 }
