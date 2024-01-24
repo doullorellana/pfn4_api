@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bitacora;
 use App\Models\Persona;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,13 @@ class PersonaController extends Controller
         $persona -> primer_apellido = $request -> primer_apellido;
         $persona -> segundo_apellido = $request -> segundo_apellido;
         $persona -> save();
+
+        // Proceso para anotar el registro de creacion de la persona en la bitacora
+        define('USER_ID_STORE', 1);
+        define('USER_EMAIL_STORE', 'admin@admin');
+        $descripcion = 'El registro de la persona ha sido creado por el usuario'.": ". $request -> usuario_creacion;
+        Bitacora::crearBitacora(USER_ID_STORE, USER_EMAIL_STORE, $descripcion);
+
         return "La persona se guardó correctamente.";
     }
 
@@ -75,6 +83,13 @@ class PersonaController extends Controller
         $persona -> primer_apellido = $request -> primer_apellido;
         $persona -> segundo_apellido = $request -> segundo_apellido;
         $persona -> save();
+
+        // Proceso para anotar el registro de actualizacion de la persona en la bitacora
+        define('USER_ID_UPDATE', 1);
+        define('USER_EMAIL_UPDATE', 'admin@admin');
+        $descripcion = 'El registro de la persona ha sido modificado por el usuario'.": ". $request -> usuario_modificacion;
+        Bitacora::crearBitacora(USER_ID_UPDATE, USER_EMAIL_UPDATE, $descripcion);
+
         return "La persona se actualizó correctamente.";
     }
 
@@ -86,6 +101,13 @@ class PersonaController extends Controller
         $persona = Persona::find($id);
         //$persona = Persona::where('id_persona', $id)->first();
         $persona -> delete();
+
+        // Proceso para anotar el registro de eliminacion de la persona en la bitacora
+        define('USER_ID_DELETE', 1);
+        define('USER_EMAIL_DELETE', 'admin@admin');
+        $descripcion = 'El registro de la persona ha sido eliminado.';
+        Bitacora::crearBitacora(USER_ID_DELETE, USER_EMAIL_DELETE, $descripcion);
+
         return "La persona se eliminó correctamente.";
     }
 }

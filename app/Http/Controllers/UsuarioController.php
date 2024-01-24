@@ -46,7 +46,7 @@ class UsuarioController extends Controller
         // Proceso para anotar el registro de creacion de usuario en la bitacora
         define('USER_ID_STORE', 1);
         define('USER_EMAIL_STORE', 'admin@admin');
-        $descripcion = 'El usuario '+ $request->usuario_email +' ha sido creado.';
+        $descripcion = 'El usuario '. $request->usuario_email .' ha sido creado por el usuario: '.$request -> usuario_creacion;
         Bitacora::crearBitacora(USER_ID_STORE, USER_EMAIL_STORE, $descripcion);
 
         return "El usuario se guardó correctamente.";
@@ -92,7 +92,7 @@ class UsuarioController extends Controller
         // Proceso para anotar el registro de actualizacion de usuario en la bitacora
         define('USER_ID_UPDATE', 1);
         define('USER_EMAIL_UPDATE', 'admin@admin');
-        $descripcion = 'El usuario '+ $request->usuario_email +' con ID# ' + $id +' ha sido modificado.';
+        $descripcion = 'El usuario '. $request->usuario_email .' con ID# ' . $id .' ha sido modificado por el usuario: '.$request -> usuario_modificacion;
         Bitacora::crearBitacora(USER_ID_UPDATE, USER_EMAIL_UPDATE, $descripcion);
 
         return "El usuario se actualizó correctamente.";
@@ -110,7 +110,7 @@ class UsuarioController extends Controller
         // Proceso para anotar el registro de eliminacion de usuario en la bitacora
         define('USER_ID_DELETE', 1);
         define('USER_EMAIL_DELETE', 'admin@admin');
-        $descripcion = 'usuario eliminado con ID# '+ $id;
+        $descripcion = 'usuario eliminado con ID# '. $id;
         Bitacora::crearBitacora(USER_ID_DELETE, USER_EMAIL_DELETE, $descripcion);
 
 

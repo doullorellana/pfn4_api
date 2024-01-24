@@ -15,7 +15,7 @@ class Bitacora extends Model
 
         $fecha = Carbon::now()->toDateString();
         $hora = Carbon::now()->toTimeString();
-        
+
         $bitacora = new Bitacora();
         $bitacora -> bitacora = $descripcion;
         $bitacora -> id_usuario = $userId;

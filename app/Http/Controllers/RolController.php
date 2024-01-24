@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bitacora;
 use App\Models\Rol;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,13 @@ class RolController extends Controller
         $rol -> usuario_modificacion = $request -> usuario_modificacion;
         $rol -> rol = $request -> rol;
         $rol -> save();
+
+        // Proceso para anotar el registro de creacion de roles en la bitacora
+        define('USER_ID_STORE', 1);
+        define('USER_EMAIL_STORE', 'admin@admin');
+        $descripcion = 'Se ha creado un nuevo rol por el usuario'.": ". $request -> usuario_creacion;
+        Bitacora::crearBitacora(USER_ID_STORE, USER_EMAIL_STORE, $descripcion);
+
         return "El rol se guardó correctamente.";
     }
 
@@ -69,6 +77,13 @@ class RolController extends Controller
         $rol -> usuario_modificacion = $request -> usuario_modificacion;
         $rol -> rol = $request -> rol;
         $rol -> save();
+
+        // Proceso para anotar el registro de actualizacion de roles en la bitacora
+        define('USER_ID_UPDATE', 1);
+        define('USER_EMAIL_UPDATE', 'admin@admin');
+        $descripcion = 'Se ha actualizado el rol por el usuario'.": ". $request -> usuario_modificacion;;
+        Bitacora::crearBitacora(USER_ID_UPDATE, USER_EMAIL_UPDATE, $descripcion);
+
         return "El rol se actualizó correctamente.";
     }
 
@@ -80,6 +95,13 @@ class RolController extends Controller
         $rol = Rol::find($id);
         //$rol = Rol::where('id_rol', $id)->first();
         $rol -> delete();
+
+        // Proceso para anotar el registro de eliminacion de roles en la bitacora
+        define('USER_ID_DELETE', 1);
+        define('USER_EMAIL_DELETE', 'admin@admin');
+        $descripcion = 'Se ha eliminado el rol';
+        Bitacora::crearBitacora(USER_ID_DELETE, USER_EMAIL_DELETE, $descripcion);
+
         return "El rol se eliminó correctamente.";
     }
 }
