@@ -29,11 +29,11 @@ Diagrama Entidad Relación de como está estructurada la Base de Datos de la API
 
 Link del PDF con las Pruebas hechas de los elementos del CRUD de la API: 
 
-![Click aqui Documentacion PDF](./public/pdf)
+- [Click aqui Documentacion PDF](./public/pdf)
 
 Link del BackUP de la Base de Datos con las pruebas hechas de los elementos del CRUD de la API: 
 
-![Click aqui BK BDD](./database/bk/dump_pfn4userlogapi.sql)
+- [Click aqui BK BDD](./database/bk/dump_pfn4userlogapi.sql)
 
 ## Learning Laravel
 
