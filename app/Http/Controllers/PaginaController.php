@@ -44,7 +44,7 @@ class PaginaController extends Controller
             // Proceso para anotar el registro de creacion de paginas en la bitacora
             define('USER_ID_STORE', 1);
             define('USER_EMAIL_STORE', 'admin@admin');
-            $descripcion = 'Se ha creado una nueva pagina por el usuario'.": ". $request->usuario_creacion;
+            $descripcion = 'Se ha creado una nueva pagina: '. $request -> url .' por el usuario'.": ". $request->usuario_creacion;
             Bitacora::crearBitacora(USER_ID_STORE, USER_EMAIL_STORE, $descripcion);
 
             return "La pagina se guardó correctamente.";
@@ -91,7 +91,7 @@ class PaginaController extends Controller
         // Proceso para anotar el registro de actualizacion de paginas en la bitacora
         define('USER_ID_UPDATE', 1);
         define('USER_EMAIL_UPDATE', 'admin@admin');
-        $descripcion = 'Se ha actualizado la pagina por el usuario'.": ". $request->usuario_modificacion;
+        $descripcion = 'Se ha actualizado la pagina: '. $request -> url .', por el usuario'.": ". $request->usuario_modificacion;
         Bitacora::crearBitacora(USER_ID_UPDATE, USER_EMAIL_UPDATE, $descripcion);
 
         return "La pagina se actualizó correctamente.";

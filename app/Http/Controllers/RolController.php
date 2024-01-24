@@ -40,7 +40,7 @@ class RolController extends Controller
         // Proceso para anotar el registro de creacion de roles en la bitacora
         define('USER_ID_STORE', 1);
         define('USER_EMAIL_STORE', 'admin@admin');
-        $descripcion = 'Se ha creado un nuevo rol por el usuario'.": ". $request -> usuario_creacion;
+        $descripcion = 'Se ha creado un nuevo rol: '. $request -> rol .', por el usuario'.": ". $request -> usuario_creacion;
         Bitacora::crearBitacora(USER_ID_STORE, USER_EMAIL_STORE, $descripcion);
 
         return "El rol se guardó correctamente.";
@@ -81,7 +81,7 @@ class RolController extends Controller
         // Proceso para anotar el registro de actualizacion de roles en la bitacora
         define('USER_ID_UPDATE', 1);
         define('USER_EMAIL_UPDATE', 'admin@admin');
-        $descripcion = 'Se ha actualizado el rol por el usuario'.": ". $request -> usuario_modificacion;;
+        $descripcion = 'Se ha actualizado el rol: '. $request -> rol .', por el usuario' .": ". $request -> usuario_modificacion;;
         Bitacora::crearBitacora(USER_ID_UPDATE, USER_EMAIL_UPDATE, $descripcion);
 
         return "El rol se actualizó correctamente.";

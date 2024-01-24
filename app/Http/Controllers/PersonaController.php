@@ -43,7 +43,7 @@ class PersonaController extends Controller
         // Proceso para anotar el registro de creacion de la persona en la bitacora
         define('USER_ID_STORE', 1);
         define('USER_EMAIL_STORE', 'admin@admin');
-        $descripcion = 'El registro de la persona ha sido creado por el usuario'.": ". $request -> usuario_creacion;
+        $descripcion = 'El registro de la persona: '. $request -> primer_nombre .' '. $request -> primer_apellido .', ha sido creado por el usuario'.": ". $request -> usuario_creacion;
         Bitacora::crearBitacora(USER_ID_STORE, USER_EMAIL_STORE, $descripcion);
 
         return "La persona se guardó correctamente.";
@@ -87,7 +87,7 @@ class PersonaController extends Controller
         // Proceso para anotar el registro de actualizacion de la persona en la bitacora
         define('USER_ID_UPDATE', 1);
         define('USER_EMAIL_UPDATE', 'admin@admin');
-        $descripcion = 'El registro de la persona ha sido modificado por el usuario'.": ". $request -> usuario_modificacion;
+        $descripcion = 'El registro de la persona: '. $request -> primer_nombre .' '. $request -> primer_apellido .', ha sido modificado por el usuario'.": ". $request -> usuario_modificacion;
         Bitacora::crearBitacora(USER_ID_UPDATE, USER_EMAIL_UPDATE, $descripcion);
 
         return "La persona se actualizó correctamente.";
